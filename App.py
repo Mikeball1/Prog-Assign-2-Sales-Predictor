@@ -33,18 +33,18 @@ def choice():
     while procode.isdigit()==True: 
        procode=int(procode)
        if procode<100 or procode>1000:
-        print("The Product Number You Have Inputted Is Not between 100-1000\nPlease Try Again")
+        print("The product number you Have inputted is not a whole number between 100-1000\nPlease Try Again")
         procode=(sure2(("Enter the product code: ")))
        else:   
          break    
     if type(procode)==str:
      while procode.isdigit()!=True:
-      print("The Product Number You Have Inputted Is Not between 100-1000\nPlease Try Again")
+      print("The product number you Have inputted is not a whole number between 100-1000\nPlease Try Again")
       procode=(sure2(("Enter the product code: ")))
       while procode.isdigit()==True:
-       procode=int(procode)
+       procode=float(procode)
        if procode<100 or procode>1000:
-        print("The Product Number You Have Inputted Is Not between 100-1000\nPlease Try Again")
+        print("The product number you Have inputted is not a whole number between 100-1000\nPlease Try Again")
         procode=(sure2(("Enter the product code: ")))
        else:
          break
@@ -57,28 +57,28 @@ def choice():
     proName=(sure2(("Enter the product name: ")))
    prosalePrice=(sure2(("Enter product sale price: ")))
    while type(prosalePrice)==str:
-    while prosalePrice.isdigit()==True:
-      prosalePrice=int(prosalePrice) 
+    while prosalePrice.isdigit()==True or prosalePrice.isdecimal()==False:
+      prosalePrice=float(prosalePrice) 
       if prosalePrice<0:
        print("Incorrect Product Sale Price. Please input a number greater than zero ")
        prosalePrice=(sure2(("Enter product sale price: ")))
       else:
          break
     if type(prosalePrice)==str:
-     while prosalePrice.isdigit()!=True:
+     while prosalePrice.isdigit()!=True or prosalePrice.isdecimal()!=False:
       print("Incorrect Product Sale Price. Please input a number greater than zero ")
       prosalePrice=(sure2(("Enter product sale price: ")))
    proManu=(sure2(("""Enter product manufacture cost: """)))
    while type(proManu)==str:
-    while proManu.isdigit()==True:
-      proManu=int(proManu) 
+    while proManu.isdigit()==True or proManu.isdecimal()==False:
+      proManu=float(proManu) 
       if proManu<=0:
        print("Incorrect Product Manufacuture Cost. Please input a number greater than zero ")
        proManu=(sure2(("Enter Product Manufacuture Cost: ")))
       else:
          break
     if type(proManu)==str:
-     while proManu.isdigit()!=True:
+     while proManu.isdigit()!=True or proManu.isdecimal()!=False:
       print("Incorrect Product Manufacuture Cost. Please input a number greater than zero ")
       proManu=(sure2(("Enter Product Manufacuture Cost: ")))
    Stoklev=(sure2(("Enter Stock level: ")))
@@ -91,12 +91,12 @@ def choice():
       else:
          break
     if type(Stoklev)==str:
-     while Stoklev.isdigit()!=True:
+     while Stoklev.isdigit()!=True :
       print("Incorrect Stock Level. Please input a number greater than or equal to zero ")
       Stoklev=(sure2(("Enter Stock Level: ")))
    MonUnit=(sure2(("Enter estimated monthly units: ")))
    while type(MonUnit)==str:
-    while MonUnit.isdigit()==True:
+    while MonUnit.isdigit()==True :
       MonUnit=int(MonUnit) 
       if MonUnit<=0:
        print("Incorrect Monthly Units. Please input a number greater than or equal to zero ")
@@ -104,7 +104,7 @@ def choice():
       else:
          break
     if type(MonUnit)==str:
-     while MonUnit.isdigit()!=True:
+     while MonUnit.isdigit()!=True :
       print("Incorrect Monthly Units. Please input a number greater than or equal to zero ")
       MonUnit=(sure2(("Enter Monthly Units: ")))
 print("--------------------------------------------------------------------\nProduct Sales Predictor\n--------------------------------------------------------------------\n")
@@ -120,7 +120,7 @@ for i in range(1,13):
    print("  Manufactured:",Manu,"\n  Units Sold:",Manu+y,"\n  Stock:",item.Stoklev)
    soldTotal+=Manu+y
 print("--------------------------------------------------------------------\nThe total units sold over 12 months is",soldTotal,"\nThe total units made over the 12 months are",12*item.MonUnit)
-print("Net Profit:",soldTotal*item.proSalePrice-12*item.MonUnit*item.proManu)
+print("Net Profit:",round(soldTotal*item.proSalePrice-12*item.MonUnit*item.proManu))
    
 
   
